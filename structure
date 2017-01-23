@@ -1,0 +1,39 @@
+#variables to create
+
+variable var1 = main text
+variable var2 = submit button
+variable var3 = check boxes
+  variable var3-a = check box 1
+  variable var3-b = check box 2
+variable var4 = editable text box for user to put in their own text
+
+####variable location
+#var1 is top center
+#var2 is bottom center
+#var3 is just above var2
+#var4 is same spot as var3
+
+#on launch
+Open blank window
+Display ((Var1) = "Hello World") at the top, in the center 
+Display ((var2) = "Hello") at the bottom, in the center center 
+
+#sequence 1
+If (var2) clicked
+  change ((var1) = "Can I ask you a question?") 
+  change ((var2) = "submit")
+  display (var3) 
+    ((((var3-a) = "Yes") (var3-b) = "No") 
+      if (var3-a) = true, then (var3-b) = false
+      if (var3-b) = true, then (var3-a) = false
+
+#sequence 1 - positive
+If (var2) clicked and (var3-a) = true,
+  change (var1) to ((var1) = "Great! Where are we currently? I'm new here.")
+  Open (var4) 
+  Disable (var3)
+ 
+#sequence 1 - negative
+If (var2) clicked and (var3-b) = true,
+  change (var1) to ((var1) = "Oh, I understand. Goodbye! *the creature whispers "rude", shoving you in the shoulder while it walks past. You also felt a slight prick in your in the side of your stomach, and you begin to feel woozy*"
+  

@@ -35,5 +35,10 @@ If (var2) clicked and (var3-a) = true,
  
 #sequence 1 - negative
 If (var2) clicked and (var3-b) = true,
-  change (var1) to ((var1) = "Oh, I understand. Goodbye! *the creature whispers "rude", shoving you in the shoulder while it walks past. You also felt a slight prick in your in the side of your stomach, and you begin to feel woozy*"
+  change (var1) to ((var1) = "Oh, I understand. Goodbye! *the creature whispers "rude", shoving you in the shoulder while it walks past. You also felt a slight prick in the side of your stomach, and you begin to feel woozy*"
+  change (var2) to ((var2) = "Dead!")
+  disable (var3)
+  disable (var4)
   
+#dying sequence
+If (var2) clicked

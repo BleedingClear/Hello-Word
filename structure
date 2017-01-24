@@ -17,28 +17,38 @@ variable var4 = editable text box for user to put in their own text
 Open blank window
 Display ((Var1) = "Hello World") at the top, in the center 
 Display ((var2) = "Hello") at the bottom, in the center center 
+initiate sequence 1
 
 #sequence 1
 If (var2) clicked
   change ((var1) = "Can I ask you a question?") 
   change ((var2) = "submit")
   display (var3) 
-    ((((var3-a) = "Yes") (var3-b) = "No") 
+    (((var3-a) = "Yes") (var3-b) = "No") 
       if (var3-a) = true, then (var3-b) = false
       if (var3-b) = true, then (var3-a) = false
 
 #sequence 1 - positive
 If (var2) clicked and (var3-a) = true,
   change (var1) to ((var1) = "Great! Where are we currently? I'm new here.")
-  Open (var4) 
   Disable (var3)
- 
+  Open (var4) 
+    if (var2) clicked
+      save input
+      initiate sequence2
+    
 #sequence 1 - negative
 If (var2) clicked and (var3-b) = true,
   change (var1) to ((var1) = "Oh, I understand. Goodbye! *the creature whispers "rude", shoving you in the shoulder while it walks past. You also felt a slight prick in the side of your stomach, and you begin to feel woozy*"
   change (var2) to ((var2) = "Dead!")
   disable (var3)
   disable (var4)
+  if (var2) clicked
+    initiate dying sequence
+  
+#sequence 2
+Change ((var1) = "Thank you. What are these tall things extruding from the ground? *The creature points at all the trees*")
   
 #dying sequence
 If (var2) clicked
+  terminate program
